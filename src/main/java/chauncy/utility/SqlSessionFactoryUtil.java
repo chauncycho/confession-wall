@@ -27,6 +27,10 @@ public class SqlSessionFactoryUtil {
         return sqlSessionFactory;
     }
 
+    public static SqlSession openSession(){
+        return sqlSessionFactory.openSession();
+    }
+
     public static void close(){
         SqlSession sqlSession = threadLocal.get();
         if (sqlSession != null){

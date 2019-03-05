@@ -48,4 +48,15 @@ public class CWallManager {
     public void setAuthority(int authority) {
         this.authority = authority;
     }
+
+    @Override
+    public String toString() {
+        return "CWallManager{" +
+                "mid=" + mid +
+                ", nickname='" + nickname + '\'' +
+                ", account='" + account + '\'' +
+                ", password='" + password + '\'' +
+                ", authority=" + authority +
+                '}';
+    }
 }
