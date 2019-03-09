@@ -6,4 +6,8 @@
     <select id="findCWallM" resultType="chauncy.bean.CWallManager">
         SELECT * FROM cwall_m WHERE account = #{account} AND password = #{password};
     </select>
+
+    <select id="findManagerByAccount" resultType="chauncy.bean.CWallManager">
+        SELECT * FROM cwall_m WHERE account = #{account};
+    </select>
 </mapper>

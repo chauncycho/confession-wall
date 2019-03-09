@@ -30,3 +30,4 @@ target
 confessionwall.iml
 src/main/resources/db.properties
 src/main/java/chauncy/test
+/src/main/webapp/test.jsp
