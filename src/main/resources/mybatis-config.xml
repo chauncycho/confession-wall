@@ -17,5 +17,6 @@
     </environments>
     <mappers>
         <mapper resource="mapper/cwall_mMapper"/>
+        <mapper resource="mapper/cwall_dMapper"/>
     </mappers>
 </configuration>

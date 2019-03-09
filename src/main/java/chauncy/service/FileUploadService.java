@@ -30,10 +30,14 @@ public class FileUploadService {
         //分析请求
         requestAnalyse(req);
 
-        //上传
+        //并发上传
         if(inputStream != null) {
             backgroundUpload(inputStream);
         }
+
+        //处理
+
+        //存入数据库
 
         //关闭inputStream
         isClose();
