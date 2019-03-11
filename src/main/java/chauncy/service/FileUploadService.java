@@ -4,6 +4,7 @@ import chauncy.bean.CWallData;
 import chauncy.bean.TableAnalyser;
 import chauncy.dao.CWallDataDao;
 import chauncy.utility.UUIDCreator;
+import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -15,6 +16,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -28,6 +30,8 @@ public class FileUploadService {
     private String datePosition;
     private boolean showContract;
     private boolean hasHead;
+    private boolean saveComplete = false;
+    private boolean insertComplete = false;
 
     //上传流程
     public void doService(HttpServletRequest req){
@@ -36,9 +40,23 @@ public class FileUploadService {
         //分析请求
         requestAnalyse(req);
 
+        //InputStream复制
+        InputStream cloneInputStream = null;
+        try {
+            cloneInputStream = (InputStream) BeanUtils.cloneBean(inputStream);
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        }
+
         //并发上传
         if(inputStream != null) {
-            backgroundUpload(inputStream);
+            backgroundUpload(cloneInputStream);
         }
 
         //处理
@@ -48,9 +66,11 @@ public class FileUploadService {
 
         //存入数据库
         CWallDataDao.insertList(list);
+        insertComplete = true;
 
-        //关闭inputStream
-        isClose();
+        req.setAttribute("CWallData",list);
+        req.setAttribute("DataPosition",datePosition);
+        req.setAttribute("ShowContact",showContract);
     }
 
     private void requestAnalyse(HttpServletRequest req){
@@ -132,7 +152,8 @@ public class FileUploadService {
             while((len = is.read(bytes))!= -1){
                 fos.write(bytes,0,len);
             }
-//            fos.flush();
+            fos.flush();
+            saveComplete = true;
             logger.debug("文件已存入服务器");
 
         } catch (IOException e) {
@@ -141,6 +162,9 @@ public class FileUploadService {
             try {
                 if (fos != null) {
                     fos.close();
+                }
+                if (saveComplete && insertComplete){
+                    isClose();
                 }
             } catch (IOException e) {
                 e.printStackTrace();

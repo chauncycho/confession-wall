@@ -61,7 +61,6 @@ public class TableAnalyser {
                 }
                 int cols = tmp.getPhysicalNumberOfCells();
                 // 读取数据
-                CWallData cWallData = new CWallData();
                 for (int row = 0; row < rows; row++)
                 {
                     if (hasHead){
@@ -75,6 +74,8 @@ public class TableAnalyser {
                     if (cell0 == null){
                         break;
                     }
+                    CWallData cWallData = new CWallData();
+
                     cell0.setCellType(CellType.STRING);
                     cWallData.setDid(Integer.valueOf(cell0.getStringCellValue()));
 
