@@ -10,6 +10,9 @@ public class CWallManagerDao {
         tempManager.setAccount(account);
         SqlSession session = SqlSessionFactoryUtil.openSession();
         CWallManager manager = session.selectOne("findManagerByAccount",tempManager);
+
+        SqlSessionFactoryUtil.closeSession(session);
+
         if (manager == null){
             return null;
         }else{

@@ -38,4 +38,10 @@ public class SqlSessionFactoryUtil {
             threadLocal.set(null);
         }
     }
+
+    public static void closeSession(SqlSession session){
+        if (session != null){
+            session.close();
+        }
+    }
 }

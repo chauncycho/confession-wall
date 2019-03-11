@@ -3,6 +3,9 @@ package chauncy.service;
 import chauncy.bean.CWallManager;
 import chauncy.dao.CWallManagerDao;
 
+/**
+ * 处理登录
+ */
 public class ManagerLoginService {
     private String account;
     private String password;

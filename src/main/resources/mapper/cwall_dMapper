@@ -3,5 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="chauncy.bean.CWallData">
+    <insert id="insertCWallData">
+        INSERT cwall_data(start_time,end_time,diy_text,content,contact,song)
+        VALUE (#{start_time},#{end_time},#{diy_text},#{content},#{contact},#{song});
+    </insert>
+
+    <select id="selectBetweenTime">
+        SELECT * FROM cwall_data WHERE end_time &gt;= #{start_time} AND end_time &lt;= #{end_time};
+    </select>
+
 
 </mapper>

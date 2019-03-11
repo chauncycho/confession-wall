@@ -52,7 +52,7 @@
                         <label style="margin: 0 20px;width: 150px;">格式选择</label>
                         <select name="type" class="form-control d-inline-block" style="width: auto;">
                             <optgroup label="选择格式">
-                                <option value="excel" selected="">Excel</option>
+                                <option value="xlsx" selected="">xlsx</option>
                                 <option value="csv">CSV</option>
                             </optgroup>
                         </select>

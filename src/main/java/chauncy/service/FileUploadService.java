@@ -1,5 +1,8 @@
 package chauncy.service;
 
+import chauncy.bean.CWallData;
+import chauncy.bean.TableAnalyser;
+import chauncy.dao.CWallDataDao;
 import chauncy.utility.UUIDCreator;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -14,6 +17,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+/**
+ * 处理文件上传
+ */
 public class FileUploadService {
     private HttpServletRequest req;
     private Logger logger = Logger.getLogger(FileUploadService.class);
@@ -36,8 +42,12 @@ public class FileUploadService {
         }
 
         //处理
+        TableAnalyser analyser = new TableAnalyser(type,hasHead);
+        List<CWallData> list = analyser.getResult(inputStream);
+        logList(list);
 
         //存入数据库
+        CWallDataDao.insertList(list);
 
         //关闭inputStream
         isClose();
@@ -102,12 +112,6 @@ public class FileUploadService {
     }
 
     private void upload(InputStream is){
-        Thread thread = new Thread(){
-            @Override
-            public void run() {
-
-            }
-        };
         FileOutputStream fos = null;
         try {
             //判断目录是否存在
@@ -128,7 +132,7 @@ public class FileUploadService {
             while((len = is.read(bytes))!= -1){
                 fos.write(bytes,0,len);
             }
-            fos.flush();
+//            fos.flush();
             logger.debug("文件已存入服务器");
 
         } catch (IOException e) {
@@ -151,6 +155,12 @@ public class FileUploadService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void logList(List<CWallData> list){
+        for (CWallData data : list){
+            logger.debug(data);
         }
     }
 }

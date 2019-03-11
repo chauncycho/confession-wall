@@ -66,4 +66,17 @@ public class CWallData {
     public void setSong(String song) {
         this.song = song;
     }
+
+    @Override
+    public String toString() {
+        return "CWallData{" +
+                "did=" + did +
+                ", start_time=" + start_time +
+                ", end_time=" + end_time +
+                ", diy_text='" + diy_text + '\'' +
+                ", content='" + content + '\'' +
+                ", contact='" + contact + '\'' +
+                ", song='" + song + '\'' +
+                '}';
+    }
 }
