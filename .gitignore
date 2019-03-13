@@ -31,3 +31,5 @@ confessionwall.iml
 src/main/resources/db.properties
 src/main/java/chauncy/test
 /src/main/webapp/test.jsp
+src/main/webapp/testheader.jsp
+src/main/webapp/images/slider2.jpg
