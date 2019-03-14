@@ -15,6 +15,30 @@
     <link rel="stylesheet" href="assets/css/Simple-Slider.css">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/Swipe-Slider-6.css">
+    <style>
+        @media screen and (max-width: 768px){
+            .my-col {
+                padding: 5px;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .my-col {
+                padding: 15px;
+            }
+        }
+
+        .my-col{
+            display: flex;
+            align-items: center;
+        }
+
+        .my-col img{
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
 </head>
 
 <body style="padding: 60px 0 0 0;">
@@ -51,7 +75,7 @@
     <section style="padding: auto;">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-md-8 col-sm-12" style="padding: 1rem;">
+                <div class="col-12 col-md-8 col-sm-12 my-col">
                     <!--*-*-*-*-*-*-*-*-*-*- BOOTSTRAP CAROUSEL *-*-*-*-*-*-*-*-*-*-->
 
                     <div id="post_carousel"
@@ -101,23 +125,23 @@
 
 
                     <!--*-*-*-*-*-*-*-*-*-*- End *-*-*-*-*-*-*-*-*-*--></div>
-                <div class="col-6 col-md-4 col-sm-6" style="padding: 1rem;"><img src="assets/img/bgitem1.jpg"
+                <div class="col-6 col-md-4 col-sm-6 my-col"><img src="assets/img/bgitem1.jpg"
                                                                                  style="width: 100%;"></div>
-                <div class="col-6 col-lg-4 col-md-4 col-sm-6" style="padding: 1rem;"><img src="assets/img/bgitem1.jpg"
+                <div class="col-6 col-lg-4 col-md-4 col-sm-6 my-col"><img src="assets/img/bgitem1.jpg"
                                                                                           width="100%"
                                                                                           data-bs-hover-animate="pulse">
                 </div>
-                <div class="col-6 col-md-4 col-sm-6" style="padding: 1rem;"><img src="assets/img/bgitem2.jpg"
+                <div class="col-6 col-md-4 col-sm-6 my-col"><img src="assets/img/bgitem2.jpg"
                                                                                  width="100%"
                                                                                  data-bs-hover-animate="pulse"></div>
-                <div class="col-6 col-md-4 col-sm-6" style="padding: 1rem;"><img src="assets/img/bgitem3.jpg"
+                <div class="col-6 col-md-4 col-sm-6 my-col"><img src="assets/img/bgitem3.jpg"
                                                                                  width="100%"
                                                                                  data-bs-hover-animate="pulse"></div>
-                <div class="col-6 col-md-4" style="padding: 15px;"><img src="assets/img/bgitem4.jpg" width="100%"
+                <div class="col-6 col-md-4 my-col"><img src="assets/img/bgitem4.jpg" width="100%"
                                                                         data-bs-hover-animate="pulse"></div>
-                <div class="col-6 col-md-4" style="padding: 15px;"><img src="assets/img/bgitem5.jpg" width="100%"
+                <div class="col-6 col-md-4 my-col"><img src="assets/img/bgitem5.jpg" width="100%"
                                                                         data-bs-hover-animate="pulse"></div>
-                <div class="col-6 col-md-4" style="padding: 15px;"><img src="assets/img/bgitem6.jpg" width="100%"
+                <div class="col-6 col-md-4 my-col"><img src="assets/img/bgitem6.jpg" width="100%"
                                                                         data-bs-hover-animate="pulse"></div>
             </div>
         </div>
